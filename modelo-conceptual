@@ -1,0 +1,73 @@
+@startuml Proyecto
+
+hide circle
+hide methods
+
+class Alumno {
+    DNI
+    Nombre
+    Apellidos
+    Email
+    Contraseña
+    Dirección
+    Teléfono
+}
+
+class Asignatura {
+    Créditos
+    Grupo
+    Departamento
+    Curso
+    Aula
+
+}
+
+class Matricula{
+    Numero
+    Fecha
+    Grado
+    Centro universitario
+    Becario
+}
+
+class Profesor {
+    Nombre
+    Apellidos
+    Tutorías
+    Email
+}
+
+Matricula "1" -right- "*" Asignatura: apareceEn
+Matricula "1" -- "1" Alumno: apareceEn
+Asignatura "1" -- "*" Profesor: impartePor
+
+note bottom of Profesor
+{No puede impartir más de
+24 créditos durante el curso}
+end note
+
+note right of Profesor
+{No puede impartir más de 6 horas
+de tutoría a la semana}
+end note
+
+note right of Profesor
+{deben pertenecer al departamento 
+que asume la asignatura}
+end note
+
+note left of Matricula
+{Alumno no puede coger más de 90
+y menos de 30 créditos en un curso}
+end note
+
+/' Se agregarían las reglas de negocio a
+las distintintas clases en forma de
+notas '/
+
+header Introducción a la Ingeniería del Software y Sistemas de Información I\nProyecto Curso 2020-2021
+footer Noviembre de 2020
+
+'Miguel Figueroa Escribano'
+
+@enduml
